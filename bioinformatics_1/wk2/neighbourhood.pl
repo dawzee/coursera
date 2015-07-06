@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use List::MoreUtils qw( uniq );
 
-sub NumberToPattern;
+sub NumberToPattern; #(number, base)
 sub HammingDistance;
 sub Neighbourhood;
 
@@ -13,9 +13,9 @@ open( my $input_fh, "<", $ARGV[0] ) || die "Can't open $ARGV[0]: $!";
 my @data = <$input_fh>;
 chomp($data[0]);
 
-printf("%d\n",&Neighbourhood($data[0],$data[1]));
+printf("%s\n",join("\n",&Neighbourhood($data[0],$data[1])));
 
-sub NumberToPattern
+sub NumberToPattern #(number, base)
 {
     my $number = $_[0];
     my $base = $_[1];
@@ -83,5 +83,6 @@ sub Neighbourhood
             push(@set,$test);
         }
     }
-    scalar uniq(@set);
+    #scalar uniq(@set);
+    uniq(@set);
 }
